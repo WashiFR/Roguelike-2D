@@ -7,6 +7,8 @@ TagManager:
   - Item
   - Coin
   - FootPlayer
+  - Enemy
+  - Weapon
   layers:
   - Default
   - TransparentFX

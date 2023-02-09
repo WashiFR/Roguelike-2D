@@ -14,6 +14,11 @@ public class PlayerHealth : MonoBehaviour
     public Sprite emptyHearth;
 
     public bool isDead;
+    public bool isInvincible = false;
+    public float invincibilityFlashDelay;
+    public float invincibilityTimeDelay;
+
+    public SpriteRenderer graphics;
 
     public static PlayerHealth instance;
 
@@ -93,7 +98,32 @@ public class PlayerHealth : MonoBehaviour
     // perd des pv/coeurs
     public void TakeDamage(float amount)
     {
-        health -= amount;
+        if (!isInvincible)
+        {
+            health -= amount;
+            isInvincible = true;
+            StartCoroutine(InvincibilityFlash());
+            StartCoroutine(InvincibilityDelay());
+        }
+    }
+
+    // animation d'invincibilité
+    public IEnumerator InvincibilityFlash()
+    {
+        while (isInvincible)
+        {
+            graphics.color = new Color(1f, 1f, 1f, 0f);
+            yield return new WaitForSeconds(invincibilityFlashDelay);
+            graphics.color = new Color(1f, 1f, 1f, 1f);
+            yield return new WaitForSeconds(invincibilityFlashDelay);
+        }
+    }
+
+    // temps d'invincibilité
+    public IEnumerator InvincibilityDelay()
+    {
+        yield return new WaitForSeconds(invincibilityTimeDelay);
+        isInvincible = false;
     }
 
     // gagne des pv/coeurs
