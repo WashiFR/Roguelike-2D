@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public SpriteRenderer sprite;
 
+    public Animator animator;
+
     // Update is called once per frame
     void Update()
     {
@@ -20,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     {
         // dans FixedUpdate pour ne pas avoir de tremblement
         Move();
+
+        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y));
     }
 
     // deplacement du joueur
