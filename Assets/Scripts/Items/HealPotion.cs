@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class HealPotion : MonoBehaviour
 {
-    public int amount;
+    public float amount;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("FootPlayer"))
         {
+            PlayerHealth.instance.Heal(amount);
             Destroy(gameObject);
-            Heal(amount);
         }
-    }
-
-    // soigne le joueur à la hauteur du montant définis
-    public void Heal(int amount)
-    {
-        Debug.Log("Potion de soins utilisée, +" + amount + " PV.");
     }
 }
