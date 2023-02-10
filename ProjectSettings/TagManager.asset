@@ -9,6 +9,7 @@ TagManager:
   - FootPlayer
   - Enemy
   - Weapon
+  - Chest
   layers:
   - Default
   - TransparentFX

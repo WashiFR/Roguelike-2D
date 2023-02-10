@@ -136,5 +136,6 @@ public class PlayerHealth : MonoBehaviour
     public void MoreHearth()
     {
         maxHearths++;
+        health++;
     }
 }
