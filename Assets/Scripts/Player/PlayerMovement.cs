@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
 
+    public Vector3 move;
+
     // Update is called once per frame
     void Update()
     {
@@ -22,8 +24,6 @@ public class PlayerMovement : MonoBehaviour
     {
         // dans FixedUpdate pour ne pas avoir de tremblement
         Move();
-
-        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y));
     }
 
     // deplacement du joueur
@@ -34,18 +34,25 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 direction = new Vector2(horizontal, vertical);
         rb.velocity = direction * speed;
+
+        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y));
     }
 
     // change la direction du regard du joueur
     public void Flip()
     {
-        if (rb.velocity.x > 0.1f)
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+
+        move = new Vector3(x, y, 0);
+
+        if (move.x > 0)
         {
-            sprite.flipX = false;
+            transform.localScale = Vector3.one;
         }
-        else if (rb.velocity.x < -0.1f)
+        else if (move.x < 0)
         {
-            sprite.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 }

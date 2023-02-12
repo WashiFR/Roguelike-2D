@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4538359846207885358}
   - component: {fileID: 4538359846207885353}
   - component: {fileID: 4538359846207885352}
+  - component: {fileID: 277353562}
   m_Layer: 0
   m_Name: Gobelin
   m_TagString: Enemy
@@ -231,3 +232,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0.5
+--- !u!114 &277353562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4538359846207885355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ac20b3d9a750b44857968cbf0b217e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  canTakeDamage: 0
+  isInvincible: 0
+  blood: {fileID: 7750173243922970399, guid: 1b1b93dadd1c6b048a2ca6fa616bf7cf, type: 3}
+  sprite: {fileID: 4538359846207885359}
+  originalMaterial: {fileID: 0}
+  whiteMaterial: {fileID: 2100000, guid: bb862990e87888c4190f277bf8a0aa91, type: 2}
