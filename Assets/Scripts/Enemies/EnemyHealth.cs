@@ -14,6 +14,8 @@ public class EnemyHealth : MonoBehaviour
     public Material originalMaterial;
     public Material whiteMaterial;
 
+    public GameObject reward;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Weapon"))
@@ -55,6 +57,7 @@ public class EnemyHealth : MonoBehaviour
         {
             health--;
             StartCoroutine(FlashImpact(0.1f));
+            Camera.instance.Shake();
         }
     }
 
@@ -75,6 +78,24 @@ public class EnemyHealth : MonoBehaviour
         var death = Instantiate(blood, transform.position, transform.rotation);
         death.Play();
 
+        Reward();
+
         Destroy(gameObject);
+    }
+
+    // donne des récompenses
+    public void Reward()
+    {
+        int numberReward = Random.Range(0, 3);
+
+        for (int i = 0; i < numberReward; i++)
+        {
+            float randomPosX = Random.Range(-0.5f, 0.5f);
+            float randomPosY = Random.Range(-0.5f, 0.5f);
+
+            Vector3 randomPos = new Vector3(randomPosX, randomPosY, 0);
+
+            Instantiate(reward, transform.position + randomPos, transform.rotation);
+        }
     }
 }

@@ -251,3 +251,4 @@ MonoBehaviour:
   sprite: {fileID: 4538359846207885359}
   originalMaterial: {fileID: 0}
   whiteMaterial: {fileID: 2100000, guid: bb862990e87888c4190f277bf8a0aa91, type: 2}
+  reward: {fileID: 5152274251085971274, guid: 3c7757e6988243945875bd741831b03d, type: 3}

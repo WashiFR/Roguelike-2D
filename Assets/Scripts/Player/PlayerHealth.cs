@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public Sprite halfHearth;
     public Sprite emptyHearth;
 
-    public bool isDead;
+    public bool isDead = false;
     public bool isInvincible = false;
     public float invincibilityFlashDelay;
     public float invincibilityTimeDelay;
@@ -40,27 +40,20 @@ public class PlayerHealth : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage(0.5f);
-            Debug.Log("Le joueur a subis des dégats");
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
             MoreHearth();
-            Debug.Log("Le joueur a 1 coeurs permanent supplémentaire");
         }
         else if (Input.GetKeyDown(KeyCode.M))
         {
             Heal(0.5f);
-            Debug.Log("Le joueur a gagné de la vie");
         }
 
         // vérifie si le joueur est mort
-        if (health == 0)
+        if (health <= 0)
         {
-            isDead = true;
-        }
-        else
-        {
-            isDead = false;
+            Die();
         }
 
         // empeche d'avoir plus de coeur que le nombre max de coeurs définit
@@ -102,6 +95,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health -= amount;
             isInvincible = true;
+            Camera.instance.Shake();
             StartCoroutine(InvincibilityFlash());
             StartCoroutine(InvincibilityDelay());
         }
@@ -137,5 +131,12 @@ public class PlayerHealth : MonoBehaviour
     {
         maxHearths++;
         health++;
+    }
+
+    // tue le joueur
+    public void Die()
+    {
+        isDead = true;
+        Destroy(gameObject);
     }
 }
