@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    public int amount;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("FootPlayer"))
         {
             Destroy(gameObject);
-            AddCoin();
+            PlayerCoins.instance.AddCoin(amount);
         }
-    }
-
-    // ajoute 1 pièce au joueur
-    public void AddCoin()
-    {
-        Debug.Log("Pièce ramassée, +1 Gold");
     }
 }

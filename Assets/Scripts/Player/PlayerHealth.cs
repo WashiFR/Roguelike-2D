@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public float health;
-    public int maxHearths;
+    public int maxHearts;
 
-    public Image[] hearths;
-    public Sprite fullHearth;
-    public Sprite halfHearth;
-    public Sprite emptyHearth;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite halfHeart;
+    public Sprite emptyHeart;
 
     public bool isDead = false;
     public bool isInvincible = false;
@@ -43,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
-            MoreHearth();
+            MoreHeart();
         }
         else if (Input.GetKeyDown(KeyCode.M))
         {
@@ -57,33 +57,33 @@ public class PlayerHealth : MonoBehaviour
         }
 
         // empeche d'avoir plus de coeur que le nombre max de coeurs définit
-        if (health > maxHearths)
+        if (health > maxHearts)
         {
-            health = maxHearths;
+            health = maxHearts;
         }
 
-        for (int i = 0; i < hearths.Length; i++)
+        for (int i = 0; i < hearts.Length; i++)
         {
             if (i == health - 0.5f)
             {
-                hearths[i].sprite = halfHearth;
+                hearts[i].sprite = halfHeart;
             }
             else if (i < health)
             {
-                hearths[i].sprite = fullHearth;
+                hearts[i].sprite = fullHeart;
             }
             else
             {
-                hearths[i].sprite = emptyHearth;
+                hearts[i].sprite = emptyHeart;
             }
 
-            if (i < maxHearths)
+            if (i < maxHearts)
             {
-                hearths[i].enabled = true;
+                hearts[i].enabled = true;
             }
             else
             {
-                hearths[i].enabled = false;
+                hearts[i].enabled = false;
             }
         }
     }
@@ -127,9 +127,9 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // ajoute 1 coeur maximum
-    public void MoreHearth()
+    public void MoreHeart()
     {
-        maxHearths++;
+        maxHearts++;
         health++;
     }
 

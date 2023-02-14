@@ -50,6 +50,7 @@ public class Chest : MonoBehaviour
         isOpen = true;
         sprite.sprite = spriteChestOpen;
         keyE.SetActive(false);
+        Reward();
     }
 
     // permet au joueur de pouvoir ouvrir ou non le coffre
@@ -57,5 +58,13 @@ public class Chest : MonoBehaviour
     {
         canOpenChest = isAble;
         keyE.SetActive(isAble);
+    }
+
+    // choisis la récompense
+    public void Reward()
+    {
+        int randomAmount = Random.Range(0, 10);
+        PlayerCoins.instance.AddCoin(randomAmount);
+        Debug.Log("+" + randomAmount + " gold");
     }
 }

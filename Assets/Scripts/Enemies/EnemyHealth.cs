@@ -15,13 +15,18 @@ public class EnemyHealth : MonoBehaviour
     public Material originalMaterial;
     public Material whiteMaterial;
 
-    public GameObject reward;
+    public GameObject[] rewards;
 
+    public GameObject healthBar;
     public RectTransform whiteBar;
     public RectTransform redBar;
     public float fullWidth;
 
     public float whiteBarDelay;
+
+    public float knockbackForce;
+    public float knockbackDuration;
+    public Rigidbody2D rb;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -50,28 +55,22 @@ public class EnemyHealth : MonoBehaviour
     {
         UpdateHealthBar();
 
-        if (whiteBar.rect.width != redBar.rect.width)
-        {
-            AnimateHealthBar();
-        }
+        DisplayHealthBar();
 
-        if (health <= 0)
-        {
-            Die();
-        }
+        AnimateHealthBar();
 
-        if (canTakeDamage)
-        {
-            TakeDamage();
-        }
+        Die();
+
+        TakeDamage();
     }
 
     // l'ennemie prend des dégâts
     public void TakeDamage()
     {
-        if (PlayerSword.instance.isAttacking && !isInvincible)
+        if (PlayerSword.instance.isAttacking && !isInvincible && canTakeDamage)
         {
             health -= PlayerSword.instance.attackValue;
+            TakeKnockback(rb.position, knockbackForce);
             StartCoroutine(FlashImpact(0.1f));
             Camera.instance.Shake();
         }
@@ -90,29 +89,41 @@ public class EnemyHealth : MonoBehaviour
     // l'ennemie meurt
     public void Die()
     {
-        // animation de mort
-        var death = Instantiate(blood, transform.position, transform.rotation);
-        death.Play();
+        if (health <= 0)
+        {
+            // animation particule de mort
+            var death = Instantiate(blood, transform.position, transform.rotation);
+            death.Play();
 
-        Reward();
+            Reward();
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 
     // donne des récompenses
     public void Reward()
     {
-        int numberReward = Random.Range(0, 3);
+        int numberOfReward = Random.Range(0, 2);
+        int objectReward = Random.Range(0, rewards.Length);
 
-        for (int i = 0; i < numberReward; i++)
+        // pièces
+        if (rewards[objectReward].name == "Coin")
+        {
+            numberOfReward = Random.Range(0, 4);
+        }
+
+        for (int i = 0; i < numberOfReward; i++)
         {
             float randomPosX = Random.Range(-0.5f, 0.5f);
             float randomPosY = Random.Range(-0.5f, 0.5f);
 
             Vector3 randomPos = new Vector3(randomPosX, randomPosY, 0);
 
-            Instantiate(reward, transform.position + randomPos, transform.rotation);
+            Instantiate(rewards[objectReward], transform.position + randomPos, transform.rotation);
         }
+
+        Debug.Log("Récompense : " + rewards[objectReward].name + " x " + numberOfReward);
     }
 
     // met à jour la barre de vie
@@ -124,7 +135,46 @@ public class EnemyHealth : MonoBehaviour
     // animation de la barre de vie
     public void AnimateHealthBar()
     {
-        whiteBar.sizeDelta = new Vector2(whiteBarDelay, redBar.rect.height);
-        whiteBarDelay--;
+        if (whiteBar.rect.width != redBar.rect.width)
+        {
+            whiteBar.sizeDelta = new Vector2(whiteBarDelay, redBar.rect.height);
+            whiteBarDelay--;
+        }
+    }
+
+    // affiche ou non la barre de vie
+    public void DisplayHealthBar()
+    {
+        if (health == maxHealth)
+        {
+            healthBar.SetActive(false);
+        }
+        else
+        {
+            healthBar.SetActive(true);
+        }
+    }
+
+    public void TakeKnockback(Vector3 direction, float force)
+    {
+        // applique une force dans la direction de l'impact
+        rb.AddForce(direction.normalized * force, ForceMode2D.Impulse);
+
+        // limite la magnitude de la force
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, knockbackForce);
+        StartCoroutine(StopKnockback());
+    }
+
+    private IEnumerator StopKnockback()
+    {
+        // attend la fin du knockback
+        yield return new WaitForSeconds(knockbackDuration);
+
+        // réduit progressivement la vitesse de l'objet jusqu'à ce qu'elle atteigne zéro
+        while (rb.velocity != Vector2.zero)
+        {
+            rb.velocity = Vector2.MoveTowards(rb.velocity, Vector2.zero, knockbackForce * Time.deltaTime);
+            yield return null;
+        }
     }
 }

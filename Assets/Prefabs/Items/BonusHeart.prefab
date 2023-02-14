@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3566726414067364022}
   - component: {fileID: 5008171628389199752}
   m_Layer: 0
-  m_Name: BonusHearth
+  m_Name: BonusHeart
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

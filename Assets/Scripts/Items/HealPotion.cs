@@ -8,7 +8,7 @@ public class HealPotion : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("FootPlayer") && PlayerHealth.instance.health < PlayerHealth.instance.maxHearths)
+        if (collision.CompareTag("FootPlayer") && PlayerHealth.instance.health < PlayerHealth.instance.maxHearts)
         {
             PlayerHealth.instance.Heal(amount);
             Destroy(gameObject);

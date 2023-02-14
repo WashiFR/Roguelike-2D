@@ -8,7 +8,7 @@ public class BonusHearth : MonoBehaviour
     {
         if (collision.CompareTag("FootPlayer"))
         {
-            PlayerHealth.instance.MoreHearth();
+            PlayerHealth.instance.MoreHeart();
             Destroy(gameObject);
         }
     }
