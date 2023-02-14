@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1091216250051918678}
   - component: {fileID: 3154784019353499488}
-  - component: {fileID: 8724068406937811265}
+  - component: {fileID: 1605441254}
   - component: {fileID: 2073105175692565795}
   m_Layer: 0
   m_Name: BigHealPotion
@@ -171,8 +171,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &8724068406937811265
-CircleCollider2D:
+--- !u!70 &1605441254
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -184,9 +184,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.000000059604645, y: -0.08522779}
-  serializedVersion: 2
-  m_Radius: 0.40166026
+  m_Offset: {x: 0, y: -0.40363604}
+  m_Size: {x: 0.65000004, y: 0.3138204}
+  m_Direction: 1
 --- !u!114 &2073105175692565795
 MonoBehaviour:
   m_ObjectHideFlags: 0

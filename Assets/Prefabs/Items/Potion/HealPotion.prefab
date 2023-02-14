@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6447240585634780448}
   - component: {fileID: 6447240585634780449}
-  - component: {fileID: 4054269393642186039}
+  - component: {fileID: 2638674329541644418}
   - component: {fileID: 6447240585634780455}
   m_Layer: 0
   m_Name: HealPotion
@@ -87,8 +87,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4054269393642186039
-CircleCollider2D:
+--- !u!70 &2638674329541644418
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,9 +100,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05627373}
-  serializedVersion: 2
-  m_Radius: 0.40152094
+  m_Offset: {x: 0, y: -0.40363604}
+  m_Size: {x: 0.65000004, y: 0.3138204}
+  m_Direction: 1
 --- !u!114 &6447240585634780455
 MonoBehaviour:
   m_ObjectHideFlags: 0

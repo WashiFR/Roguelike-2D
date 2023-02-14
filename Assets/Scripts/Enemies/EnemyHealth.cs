@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int health;
+    public float health;
+    public float maxHealth;
     public bool canTakeDamage = false;
     public bool isInvincible = false;
 
@@ -15,6 +16,12 @@ public class EnemyHealth : MonoBehaviour
     public Material whiteMaterial;
 
     public GameObject reward;
+
+    public RectTransform whiteBar;
+    public RectTransform redBar;
+    public float fullWidth;
+
+    public float whiteBarDelay;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,13 +42,22 @@ public class EnemyHealth : MonoBehaviour
     private void Start()
     {
         originalMaterial = sprite.material;
+        fullWidth = whiteBar.rect.width;
+        whiteBarDelay = fullWidth;
     }
 
     private void Update()
     {
+        UpdateHealthBar();
+
+        if (whiteBar.rect.width != redBar.rect.width)
+        {
+            AnimateHealthBar();
+        }
+
         if (health <= 0)
         {
-            Death();
+            Die();
         }
 
         if (canTakeDamage)
@@ -55,7 +71,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (PlayerSword.instance.isAttacking && !isInvincible)
         {
-            health--;
+            health -= PlayerSword.instance.attackValue;
             StartCoroutine(FlashImpact(0.1f));
             Camera.instance.Shake();
         }
@@ -72,7 +88,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
     // l'ennemie meurt
-    public void Death()
+    public void Die()
     {
         // animation de mort
         var death = Instantiate(blood, transform.position, transform.rotation);
@@ -97,5 +113,18 @@ public class EnemyHealth : MonoBehaviour
 
             Instantiate(reward, transform.position + randomPos, transform.rotation);
         }
+    }
+
+    // met à jour la barre de vie
+    public void UpdateHealthBar()
+    {
+        redBar.sizeDelta = new Vector2((health / maxHealth) * fullWidth, redBar.rect.height);
+    }
+
+    // animation de la barre de vie
+    public void AnimateHealthBar()
+    {
+        whiteBar.sizeDelta = new Vector2(whiteBarDelay, redBar.rect.height);
+        whiteBarDelay--;
     }
 }

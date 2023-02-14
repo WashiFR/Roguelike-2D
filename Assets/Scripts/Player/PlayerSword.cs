@@ -9,6 +9,8 @@ public class PlayerSword : MonoBehaviour
     public bool isAttacking = false;
     public bool canAttack = true;
 
+    public float attackValue;
+
     public static PlayerSword instance;
 
     // permet d'utiliser les fonctions de la classe dans les autres classe

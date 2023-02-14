@@ -50,4 +50,16 @@ public class GameOverMenu : MonoBehaviour
         gameOverMenu.SetActive(true);
         SceneManager.LoadScene("SampleScene");
     }
+
+    // redirige vers le Main Menu
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    // quitte le jeu
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
