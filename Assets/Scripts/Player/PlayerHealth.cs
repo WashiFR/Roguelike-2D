@@ -20,6 +20,9 @@ public class PlayerHealth : MonoBehaviour
 
     public SpriteRenderer graphics;
 
+    public AudioSource audioSource;
+    public AudioClip soundEffect;
+
     public static PlayerHealth instance;
 
     // permet d'utiliser les fonctions de la classe dans les autres classe
@@ -36,56 +39,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        // test temporaire
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(0.5f);
-        }
-        else if (Input.GetKeyDown(KeyCode.L))
-        {
-            MoreHeart();
-        }
-        else if (Input.GetKeyDown(KeyCode.M))
-        {
-            Heal(0.5f);
-        }
+        Die();
 
-        // vérifie si le joueur est mort
-        if (health <= 0)
-        {
-            Die();
-        }
-
-        // empeche d'avoir plus de coeur que le nombre max de coeurs définit
-        if (health > maxHearts)
-        {
-            health = maxHearts;
-        }
-
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if (i == health - 0.5f)
-            {
-                hearts[i].sprite = halfHeart;
-            }
-            else if (i < health)
-            {
-                hearts[i].sprite = fullHeart;
-            }
-            else
-            {
-                hearts[i].sprite = emptyHeart;
-            }
-
-            if (i < maxHearts)
-            {
-                hearts[i].enabled = true;
-            }
-            else
-            {
-                hearts[i].enabled = false;
-            }
-        }
+        UpdateHearts();
     }
 
     // perd des pv/coeurs
@@ -93,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!isInvincible)
         {
+            AudioManager.instance.PlayClipAt(soundEffect, transform.position);
             health -= amount;
             isInvincible = true;
             Camera.instance.Shake();
@@ -133,10 +90,48 @@ public class PlayerHealth : MonoBehaviour
         health++;
     }
 
+    // met à jour le nombre de coeur
+    public void UpdateHearts()
+    {
+        // empeche d'avoir plus de coeur que le nombre max de coeurs définit
+        if (health > maxHearts)
+        {
+            health = maxHearts;
+        }
+
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i == health - 0.5f)
+            {
+                hearts[i].sprite = halfHeart;
+            }
+            else if (i < health)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            if (i < maxHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
+    }
+
     // tue le joueur
     public void Die()
     {
-        isDead = true;
-        Destroy(gameObject);
+        if (health <= 0)
+        {
+            isDead = true;
+            Destroy(gameObject);
+        }
     }
 }

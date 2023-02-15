@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public bool isGamePaused = false;
     public GameObject pauseMenu;
+    public GameObject settingsMenu;
 
     private void Update()
     {
@@ -44,6 +45,12 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
+    }
+
+    // redirige vers les paramètres
+    public void SettingsMenu()
+    {
+        settingsMenu.SetActive(true);
     }
 
     // quitte le jeu

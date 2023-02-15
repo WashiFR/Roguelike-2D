@@ -10,6 +10,9 @@ public class PlayerSword : MonoBehaviour
     public bool canAttack = true;
 
     public float attackValue;
+    public float knockbackForce;
+
+    public SpriteRenderer sprite;
 
     public static PlayerSword instance;
 
@@ -25,6 +28,11 @@ public class PlayerSword : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        sprite.color = new Color(1, 1, 1, 0);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -38,6 +46,7 @@ public class PlayerSword : MonoBehaviour
         {
             StartCoroutine(AttackDelay(0.001f));
             animator.SetTrigger("Swing");
+            StartCoroutine(HideWeapon(0.3f));
             StartCoroutine(AttackDuration(0.2f));
         }
     }
@@ -56,5 +65,12 @@ public class PlayerSword : MonoBehaviour
         isAttacking = true;
         yield return new WaitForSeconds(delay);
         isAttacking = false;
+    }
+
+    public IEnumerator HideWeapon(float duration)
+    {
+        sprite.color = new Color(1, 1, 1, 1);
+        yield return new WaitForSeconds(duration);
+        sprite.color = new Color(1, 1, 1, 0);
     }
 }

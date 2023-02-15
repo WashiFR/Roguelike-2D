@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Chest : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class Chest : MonoBehaviour
     public Sprite spriteChestOpen;
 
     public GameObject keyE;
+
+    public Text textReward;
+
+    public AudioSource audioSource;
+    public AudioClip soundEffect;
 
     // vérifie si le joueur est proche du coffre
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,19 +44,20 @@ public class Chest : MonoBehaviour
 
     private void Update()
     {
-        if (canOpenChest && Input.GetKeyDown(KeyCode.E) && !isOpen)
-        {
-            OpenChest();
-        }
+        OpenChest();
     }
 
     // ouvre le coffre
     public void OpenChest()
     {
-        isOpen = true;
-        sprite.sprite = spriteChestOpen;
-        keyE.SetActive(false);
-        Reward();
+        if (canOpenChest && Input.GetKeyDown(KeyCode.E) && !isOpen)
+        {
+            AudioManager.instance.PlayClipAt(soundEffect, transform.position);
+            isOpen = true;
+            sprite.sprite = spriteChestOpen;
+            keyE.SetActive(false);
+            Reward();
+        }
     }
 
     // permet au joueur de pouvoir ouvrir ou non le coffre
@@ -65,6 +72,14 @@ public class Chest : MonoBehaviour
     {
         int randomAmount = Random.Range(0, 10);
         PlayerCoins.instance.AddCoin(randomAmount);
-        Debug.Log("+" + randomAmount + " gold");
+        textReward.text = "+ " + randomAmount.ToString() + " gold";
+        StartCoroutine(ShowTextReward());
+    }
+
+    // affiche la récompense pendant un certains temps
+    public IEnumerator ShowTextReward()
+    {
+        yield return new WaitForSeconds(2);
+        textReward.text = "";
     }
 }

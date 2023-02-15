@@ -3,14 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.Audio;
 
 public class SettingsMenu : MonoBehaviour
 {
     public Dropdown resolutionDropdown;
     public Resolution[] resolutions;
 
+    public AudioMixer audioMixer;
+
+    public Slider musicSlider;
+    public Slider soundSlider;
+
     private void Start()
     {
+        audioMixer.GetFloat("Music", out float musicValueForSlider);
+        musicSlider.value = musicValueForSlider;
+
+        audioMixer.GetFloat("Sound", out float soundValueForSlider);
+        soundSlider.value = soundValueForSlider;
+
         // récupère toutes les résolutions possibles de l'utilisateurs (sans doublons)
         resolutions = Screen.resolutions.Select(resolution => new Resolution { width = resolution.width, height = resolution.height }).Distinct().ToArray();
 
@@ -49,10 +61,16 @@ public class SettingsMenu : MonoBehaviour
         Screen.fullScreen = isFullScreen;
     }
 
-    // permet de régler le volume du jeu
-    public void SetVolume(float volume)
+    // permet de régler la music du jeu
+    public void SetMusicVolume(float volume)
     {
-        // TODO
+        audioMixer.SetFloat("Music", volume);
+    }
+
+    // permet de régler le sons du jeu
+    public void SetSoundVolume(float volume)
+    {
+        audioMixer.SetFloat("Sound", volume);
     }
 
     // permet de quitter le menu de paramètre

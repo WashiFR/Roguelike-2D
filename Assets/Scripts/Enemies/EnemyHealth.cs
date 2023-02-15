@@ -24,9 +24,14 @@ public class EnemyHealth : MonoBehaviour
 
     public float whiteBarDelay;
 
-    public float knockbackForce;
+    public Vector2 difference;
+    public bool canTakeKnockback;
     public float knockbackDuration;
     public Rigidbody2D rb;
+
+    public AudioSource audioSource;
+    public AudioClip soundEffect;
+    public AudioClip dieSoundEffect;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -42,6 +47,11 @@ public class EnemyHealth : MonoBehaviour
         {
             canTakeDamage = false;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        difference = (transform.position - collision.transform.position).normalized;
     }
 
     private void Start()
@@ -70,9 +80,15 @@ public class EnemyHealth : MonoBehaviour
         if (PlayerSword.instance.isAttacking && !isInvincible && canTakeDamage)
         {
             health -= PlayerSword.instance.attackValue;
-            TakeKnockback(rb.position, knockbackForce);
             StartCoroutine(FlashImpact(0.1f));
             Camera.instance.Shake();
+
+            if (health > 0)
+            {
+                AudioManager.instance.PlayClipAt(soundEffect, transform.position);
+            }
+
+            TakeKnockback();
         }
     }
 
@@ -91,6 +107,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health <= 0)
         {
+            AudioManager.instance.PlayClipAt(dieSoundEffect, transform.position);
             // animation particule de mort
             var death = Instantiate(blood, transform.position, transform.rotation);
             death.Play();
@@ -122,8 +139,6 @@ public class EnemyHealth : MonoBehaviour
 
             Instantiate(rewards[objectReward], transform.position + randomPos, transform.rotation);
         }
-
-        Debug.Log("Récompense : " + rewards[objectReward].name + " x " + numberOfReward);
     }
 
     // met à jour la barre de vie
@@ -135,10 +150,10 @@ public class EnemyHealth : MonoBehaviour
     // animation de la barre de vie
     public void AnimateHealthBar()
     {
-        if (whiteBar.rect.width != redBar.rect.width)
+        if (whiteBar.rect.width > redBar.rect.width)
         {
             whiteBar.sizeDelta = new Vector2(whiteBarDelay, redBar.rect.height);
-            whiteBarDelay--;
+            whiteBarDelay -= Time.deltaTime * 100;
         }
     }
 
@@ -155,26 +170,23 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void TakeKnockback(Vector3 direction, float force)
+    // prend du recul
+    public void TakeKnockback()
     {
-        // applique une force dans la direction de l'impact
-        rb.AddForce(direction.normalized * force, ForceMode2D.Impulse);
-
-        // limite la magnitude de la force
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, knockbackForce);
-        StartCoroutine(StopKnockback());
+        if (canTakeKnockback)
+        {
+            rb.AddForce(difference * PlayerSword.instance.knockbackForce * rb.mass, ForceMode2D.Impulse);
+            StartCoroutine(KnockbackDuration());
+        }
     }
 
-    private IEnumerator StopKnockback()
+    // durée du recul
+    public IEnumerator KnockbackDuration()
     {
-        // attend la fin du knockback
         yield return new WaitForSeconds(knockbackDuration);
-
-        // réduit progressivement la vitesse de l'objet jusqu'à ce qu'elle atteigne zéro
-        while (rb.velocity != Vector2.zero)
-        {
-            rb.velocity = Vector2.MoveTowards(rb.velocity, Vector2.zero, knockbackForce * Time.deltaTime);
-            yield return null;
-        }
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
+        yield return new WaitForSeconds(0.01f);
+        rb.isKinematic = false;
     }
 }

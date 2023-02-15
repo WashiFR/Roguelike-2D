@@ -25,22 +25,22 @@ public class GameOverMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameOver();
+    }
+
+    // affiche le menu de Game Over
+    public void GameOver()
+    {
         if (PlayerHealth.instance.isDead)
         {
-            GameOver();
+            isGameOver = true;
+            gameOverMenu.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.R))
             {
                 RestartGame();
             }
         }
-    }
-
-    // affiche le menu de Game Over
-    public void GameOver()
-    {
-        isGameOver = true;
-        gameOverMenu.SetActive(true);
     }
 
     // restart le jeu
