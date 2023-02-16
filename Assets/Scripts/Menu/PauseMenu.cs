@@ -52,10 +52,4 @@ public class PauseMenu : MonoBehaviour
     {
         settingsMenu.SetActive(true);
     }
-
-    // quitte le jeu
-    public void Quit()
-    {
-        Application.Quit();
-    }
 }
