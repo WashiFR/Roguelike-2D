@@ -14,6 +14,20 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 move;
 
+    public static PlayerMovement instance;
+
+    // permet d'utiliser les fonctions de la classe dans les autres classe
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("Plus d'une instance de PlayerMovement dans la scène");
+            return;
+        }
+
+        instance = this;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -54,5 +68,11 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
+    }
+
+    // augmente la vitesse du joueur
+    public void MoreSpeedValue(float amount)
+    {
+        speed += amount;
     }
 }

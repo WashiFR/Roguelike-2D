@@ -39,6 +39,18 @@ public class PlayerSword : MonoBehaviour
         Swing();
     }
 
+    // augmente l'attaque du joueur
+    public void MoreAttackValue(float amount)
+    {
+        attackValue += amount;
+    }
+
+    // augmente le recul de l'attaque du joueur
+    public void MoreKnockbackValue(float amount)
+    {
+        knockbackForce += amount;
+    }
+
     // lance l'animation d'attaque
     public void Swing()
     {

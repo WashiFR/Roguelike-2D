@@ -14,6 +14,7 @@ public class Chest : MonoBehaviour
     public GameObject keyE;
 
     public Text textReward;
+    public Animator animatorText;
 
     public AudioSource audioSource;
     public AudioClip soundEffect;
@@ -79,6 +80,7 @@ public class Chest : MonoBehaviour
     // affiche la récompense pendant un certains temps
     public IEnumerator ShowTextReward()
     {
+        animatorText.SetTrigger("UpText");
         yield return new WaitForSeconds(2);
         textReward.text = "";
     }

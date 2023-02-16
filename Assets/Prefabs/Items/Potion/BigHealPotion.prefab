@@ -95,8 +95,8 @@ GameObject:
   - component: {fileID: 1091216250051918678}
   - component: {fileID: 3154784019353499488}
   - component: {fileID: 1605441254}
-  - component: {fileID: 2073105175692565795}
   - component: {fileID: 5670177643025014510}
+  - component: {fileID: 7509678777967704353}
   m_Layer: 0
   m_Name: BigHealPotion
   m_TagString: Item
@@ -188,21 +188,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.40363604}
   m_Size: {x: 0.65000004, y: 0.3138204}
   m_Direction: 1
---- !u!114 &2073105175692565795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188060862945038014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3082fd38ee3450b42b8088620f117d87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 1
-  audioSource: {fileID: 5670177643025014510}
-  soundEffect: {fileID: 8300000, guid: f6bc7874110d24a4885ec56e521d1b9c, type: 3}
 --- !u!82 &5670177643025014510
 AudioSource:
   m_ObjectHideFlags: 0
@@ -299,3 +284,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7509678777967704353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188060862945038014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3082fd38ee3450b42b8088620f117d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 2
+  audioSource: {fileID: 5670177643025014510}
+  soundEffect: {fileID: 8300000, guid: f6bc7874110d24a4885ec56e521d1b9c, type: 3}
