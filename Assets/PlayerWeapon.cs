@@ -2,26 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSword : MonoBehaviour
+public class PlayerWeapon : MonoBehaviour
 {
-    public Animator animator;
+    public int currentWeapon;
+    public Weapon[] weapons;
+
+    public float attackBonus;
+    public float attack;
+    public float attackValue;
+
+    public float knockbackBonus;
+    public float knockback;
+    public float knockbackValue;
 
     public bool isAttacking = false;
     public bool canAttack = true;
 
-    public float attackValue;
-    public float knockbackForce;
-
-    public SpriteRenderer sprite;
-
-    public static PlayerSword instance;
+    public static PlayerWeapon instance;
 
     // permet d'utiliser les fonctions de la classe dans les autres classe
     private void Awake()
     {
         if (instance != null)
         {
-            Debug.LogWarning("Plus d'une instance de PlayerSword dans la scène");
+            Debug.LogWarning("Plus d'une instance de PlayerWeapon dans la scène");
             return;
         }
 
@@ -30,7 +34,32 @@ public class PlayerSword : MonoBehaviour
 
     private void Start()
     {
-        sprite.color = new Color(1, 1, 1, 0);
+        CurrentWeaponUpdate();
+        UpdateValues();
+    }
+
+    public void CurrentWeaponUpdate()
+    {
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            if (i == currentWeapon)
+            {
+                weapons[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                weapons[i].gameObject.SetActive(false);
+            }
+        }
+
+        attack = weapons[currentWeapon].attackValue;
+        knockback = weapons[currentWeapon].knockbackForce;
+    }
+
+    public void UpdateValues()
+    {
+        attackValue = attack + attackBonus;
+        knockbackValue = knockback + knockbackBonus;
     }
 
     // Update is called once per frame
@@ -42,13 +71,15 @@ public class PlayerSword : MonoBehaviour
     // augmente l'attaque du joueur
     public void MoreAttackValue(float amount)
     {
-        attackValue += amount;
+        attackBonus += amount;
+        UpdateValues();
     }
 
     // augmente le recul de l'attaque du joueur
     public void MoreKnockbackValue(float amount)
     {
-        knockbackForce += amount;
+        knockbackBonus += amount;
+        UpdateValues();
     }
 
     // lance l'animation d'attaque
@@ -57,7 +88,7 @@ public class PlayerSword : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canAttack)
         {
             StartCoroutine(AttackDelay(0.001f));
-            animator.SetTrigger("Swing");
+            weapons[currentWeapon].animator.SetTrigger("Swing");
             StartCoroutine(HideWeapon(0.3f));
             StartCoroutine(AttackDuration(0.2f));
         }
@@ -81,8 +112,9 @@ public class PlayerSword : MonoBehaviour
 
     public IEnumerator HideWeapon(float duration)
     {
-        sprite.color = new Color(1, 1, 1, 1);
+        weapons[currentWeapon].sprite.color = new Color(1, 1, 1, 1);
         yield return new WaitForSeconds(duration);
-        sprite.color = new Color(1, 1, 1, 0);
+        weapons[currentWeapon].sprite.color = new Color(1, 1, 1, 0);
     }
+
 }

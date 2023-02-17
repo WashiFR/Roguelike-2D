@@ -77,9 +77,9 @@ public class EnemyHealth : MonoBehaviour
     // l'ennemie prend des dégâts
     public void TakeDamage()
     {
-        if (PlayerSword.instance.isAttacking && !isInvincible && canTakeDamage)
+        if (PlayerWeapon.instance.isAttacking && !isInvincible && canTakeDamage)
         {
-            health -= PlayerSword.instance.attackValue;
+            health -= PlayerWeapon.instance.attackValue;
             StartCoroutine(FlashImpact(0.1f));
             Camera.instance.Shake();
 
@@ -175,7 +175,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (canTakeKnockback)
         {
-            rb.AddForce(difference * PlayerSword.instance.knockbackForce * rb.mass, ForceMode2D.Impulse);
+            rb.AddForce(difference * PlayerWeapon.instance.knockbackValue * rb.mass, ForceMode2D.Impulse);
             StartCoroutine(KnockbackDuration());
         }
     }

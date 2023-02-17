@@ -73,7 +73,8 @@ public class Chest : MonoBehaviour
     {
         int randomAmount = Random.Range(0, 10);
         PlayerCoins.instance.AddCoin(randomAmount);
-        textReward.text = "+ " + randomAmount.ToString() + " gold";
+        textReward.gameObject.SetActive(true);
+        textReward.text = randomAmount.ToString();
         StartCoroutine(ShowTextReward());
     }
 
@@ -82,6 +83,6 @@ public class Chest : MonoBehaviour
     {
         animatorText.SetTrigger("UpText");
         yield return new WaitForSeconds(2);
-        textReward.text = "";
+        textReward.gameObject.SetActive(false);
     }
 }
