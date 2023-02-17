@@ -11,6 +11,8 @@ TagManager:
   - Weapon
   - Chest
   - FootWeapon
+  - ItemWeapon
+  - LittleHeart
   layers:
   - Default
   - TransparentFX

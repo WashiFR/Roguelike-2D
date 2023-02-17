@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 7772321538409219746}
   - component: {fileID: 3524537008578955693}
   - component: {fileID: 5182151581602592737}
-  - component: {fileID: 4390798678603950707}
   - component: {fileID: 8824502951318631647}
+  - component: {fileID: 5819565577472893531}
   m_Layer: 0
   m_Name: LittleHeart
-  m_TagString: Untagged
+  m_TagString: LittleHeart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,21 +103,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.0055196285}
   serializedVersion: 2
   m_Radius: 0.27369952
---- !u!114 &4390798678603950707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331751286637815482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3082fd38ee3450b42b8088620f117d87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 0.5
-  audioSource: {fileID: 8824502951318631647}
-  soundEffect: {fileID: 8300000, guid: f6bc7874110d24a4885ec56e521d1b9c, type: 3}
 --- !u!82 &8824502951318631647
 AudioSource:
   m_ObjectHideFlags: 0
@@ -214,3 +199,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5819565577472893531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331751286637815482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543510179ed37ca4782fe78bcc7e47e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 8824502951318631647}
+  soundEffect: {fileID: 8300000, guid: f6bc7874110d24a4885ec56e521d1b9c, type: 3}

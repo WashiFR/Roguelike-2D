@@ -214,7 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2dea536b4127b47981b6ed60b5572f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0.5
   canTakeItem: 0
   price: 1
   sprite: {fileID: 1212519793364898995}
@@ -222,6 +221,7 @@ MonoBehaviour:
   keyE: {fileID: 8864406664532733667}
   audioSource: {fileID: 8478927401988914493}
   soundEffect: {fileID: 8300000, guid: f6bc7874110d24a4885ec56e521d1b9c, type: 3}
+  amount: 0.5
 --- !u!1 &4116984259961042161
 GameObject:
   m_ObjectHideFlags: 0

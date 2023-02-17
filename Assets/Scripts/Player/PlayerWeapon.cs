@@ -56,6 +56,26 @@ public class PlayerWeapon : MonoBehaviour
         knockback = weapons[currentWeapon].knockbackForce;
     }
 
+    public void ChangeCurrentWeapon(string weaponName)
+    {
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            if (weapons[i].weaponName == weaponName)
+            {
+                weapons[i].gameObject.SetActive(true);
+                currentWeapon = i;
+            }
+            else
+            {
+                weapons[i].gameObject.SetActive(false);
+            }
+        }
+
+        attack = weapons[currentWeapon].attackValue;
+        knockback = weapons[currentWeapon].knockbackForce;
+        UpdateValues();
+    }
+
     public void UpdateValues()
     {
         attackValue = attack + attackBonus;

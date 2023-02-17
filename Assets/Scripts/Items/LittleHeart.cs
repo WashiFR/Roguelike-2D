@@ -1,20 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class HealPotion : Items
+public class LittleHeart : MonoBehaviour
 {
-    public float amount;
+    public AudioSource audioSource;
+    public AudioClip soundEffect;
 
-    // utilise l'objet
-    public override void UseItem()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (PlayerHealth.instance.health < PlayerHealth.instance.maxHearts)
         {
             AudioManager.instance.PlayClipAt(soundEffect, transform.position);
-            PlayerCoins.instance.Pay(price);
-            PlayerHealth.instance.Heal(amount);
+            PlayerHealth.instance.Heal(0.5f);
             Destroy(gameObject);
         }
     }
