@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LittleHeart : MonoBehaviour
@@ -9,7 +7,7 @@ public class LittleHeart : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (PlayerHealth.instance.health < PlayerHealth.instance.maxHearts)
+        if (collision.CompareTag("Player") && PlayerHealth.instance.health < PlayerHealth.instance.maxHearts)
         {
             AudioManager.instance.PlayClipAt(soundEffect, transform.position);
             PlayerHealth.instance.Heal(0.5f);

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -52,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
             AudioManager.instance.PlayClipAt(soundEffect, transform.position);
             health -= amount;
             isInvincible = true;
-            Camera.instance.Shake();
+            MainCamera.instance.Shake();
             StartCoroutine(InvincibilityFlash());
             StartCoroutine(InvincibilityDelay());
         }

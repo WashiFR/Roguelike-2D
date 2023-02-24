@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -28,6 +27,7 @@ public class EnemyHealth : MonoBehaviour
     public bool canTakeKnockback;
     public float knockbackDuration;
     public Rigidbody2D rb;
+    public BoxCollider2D box2D;
 
     public AudioSource audioSource;
     public AudioClip soundEffect;
@@ -35,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Weapon"))
+        if (collision.CompareTag("Weapon") && box2D.IsTouching(collision))
         {
             canTakeDamage = true;
         }
@@ -43,7 +43,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Weapon"))
+        if (collision.CompareTag("Weapon") && !box2D.IsTouching(collision))
         {
             canTakeDamage = false;
         }
@@ -81,7 +81,7 @@ public class EnemyHealth : MonoBehaviour
         {
             health -= PlayerWeapon.instance.attackValue;
             StartCoroutine(FlashImpact(0.1f));
-            Camera.instance.Shake();
+            MainCamera.instance.Shake();
 
             if (health > 0)
             {

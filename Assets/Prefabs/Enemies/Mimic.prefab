@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6022977017678546581}
   - component: {fileID: 6022977017678546580}
   - component: {fileID: 7885406657562559206}
+  - component: {fileID: 7785546038035100968}
+  - component: {fileID: 2323885340524135952}
   m_Layer: 7
   m_Name: Mimic
   m_TagString: Enemy
@@ -268,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  box2D: {fileID: 6022977017678546578}
 --- !u!114 &7885406657562559206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,9 +303,44 @@ MonoBehaviour:
   canTakeKnockback: 1
   knockbackDuration: 0.2
   rb: {fileID: 3528923125509618414}
+  box2D: {fileID: 6022977017678546578}
   audioSource: {fileID: 6741325931254647075}
   soundEffect: {fileID: 8300000, guid: 33ff1a4c34aaae1428056fd8bd0da84d, type: 3}
   dieSoundEffect: {fileID: 8300000, guid: e18fd6175b40f9047b1071f93d3d5a86, type: 3}
+--- !u!114 &7785546038035100968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6022977017678546583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378fcca2349f06746ab42e3c348eff61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  box2D: {fileID: 2323885340524135952}
+  healthBar: {fileID: 7885406658691003661}
+  animator: {fileID: 6022977017678546581}
+  isPlayerDetected: 0
+  player: {fileID: 0}
+--- !u!58 &2323885340524135952
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6022977017678546583}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
 --- !u!1 &7885406659297343442
 GameObject:
   m_ObjectHideFlags: 0

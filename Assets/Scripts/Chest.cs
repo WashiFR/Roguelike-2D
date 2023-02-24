@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +14,8 @@ public class Chest : MonoBehaviour
 
     public Text textReward;
     public Animator animatorText;
+
+    public GameObject outline;
 
     public AudioSource audioSource;
     public AudioClip soundEffect;
@@ -53,6 +54,7 @@ public class Chest : MonoBehaviour
     {
         if (canOpenChest && Input.GetKeyDown(KeyCode.E) && !isOpen)
         {
+            outline.gameObject.SetActive(false);
             AudioManager.instance.PlayClipAt(soundEffect, transform.position);
             isOpen = true;
             sprite.sprite = spriteChestOpen;
@@ -66,6 +68,7 @@ public class Chest : MonoBehaviour
     {
         canOpenChest = isAble;
         keyE.SetActive(isAble);
+        outline.gameObject.SetActive(isAble);
     }
 
     // choisis la récompense

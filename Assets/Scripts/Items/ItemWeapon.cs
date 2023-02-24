@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemWeapon : Items
@@ -8,9 +6,12 @@ public class ItemWeapon : Items
 
     public override void UseItem()
     {
-        AudioManager.instance.PlayClipAt(soundEffect, transform.position);
-        PlayerCoins.instance.Pay(price);
-        PlayerWeapon.instance.ChangeCurrentWeapon(weaponName);
-        Destroy(gameObject);
+        if (PlayerWeapon.instance.weapons[PlayerWeapon.instance.currentWeapon].weaponName != weaponName)
+        {
+            AudioManager.instance.PlayClipAt(soundEffect, transform.position);
+            PlayerCoins.instance.Pay(price);
+            PlayerWeapon.instance.ChangeCurrentWeapon(weaponName);
+            Destroy(gameObject);
+        }
     }
 }

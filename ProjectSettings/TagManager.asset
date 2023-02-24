@@ -13,6 +13,9 @@ TagManager:
   - FootWeapon
   - ItemWeapon
   - LittleHeart
+  - Boss
+  - FootEnemy
+  - FootBoss
   layers:
   - Default
   - TransparentFX

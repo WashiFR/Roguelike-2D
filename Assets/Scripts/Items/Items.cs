@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +9,8 @@ public abstract class Items : MonoBehaviour
     public SpriteRenderer sprite;
     public Text textPrice;
     public GameObject keyE;
+
+    public GameObject outline;
 
     public AudioSource audioSource;
     public AudioClip soundEffect;
@@ -29,11 +29,14 @@ public abstract class Items : MonoBehaviour
                 }
                 else if (gameObject.CompareTag("ItemWeapon"))
                 {
+                    outline.gameObject.SetActive(true);
+                    sprite.sortingOrder = 10;
                     keyE.SetActive(true);
                 }
             }
             else if (price > 0)
             {
+                outline.gameObject.SetActive(true);
                 sprite.sortingOrder = 10;
                 keyE.SetActive(true);
                 textPrice.gameObject.SetActive(true);
@@ -50,6 +53,7 @@ public abstract class Items : MonoBehaviour
     {
         if (collision.CompareTag("FootPlayer"))
         {
+            outline.gameObject.SetActive(false);
             sprite.sortingOrder = -1;
             canTakeItem = false;
             keyE.SetActive(false);

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
@@ -18,6 +17,11 @@ public class PlayerWeapon : MonoBehaviour
     public bool isAttacking = false;
     public bool canAttack = true;
 
+    public Camera mainCam;
+    public Vector3 mousePos;
+    public SpriteRenderer playerSprite;
+    public SpriteRenderer weaponSprite;
+
     public static PlayerWeapon instance;
 
     // permet d'utiliser les fonctions de la classe dans les autres classe
@@ -34,8 +38,29 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Start()
     {
+        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         CurrentWeaponUpdate();
         UpdateValues();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        ChangeWeaponDirection();
+
+        if (Input.GetMouseButtonDown(0) && !PauseMenu.instance.isGamePaused)
+        {
+            Swing();
+        }
+
+        if (transform.eulerAngles.z > 0 && transform.eulerAngles.z < 180)
+        {
+            weaponSprite.sortingOrder = playerSprite.sortingOrder - 1;
+        }
+        else
+        {
+            weaponSprite.sortingOrder = playerSprite.sortingOrder + 1;
+        }
     }
 
     public void CurrentWeaponUpdate()
@@ -45,6 +70,7 @@ public class PlayerWeapon : MonoBehaviour
             if (i == currentWeapon)
             {
                 weapons[i].gameObject.SetActive(true);
+                weaponSprite = weapons[i].sprite;
             }
             else
             {
@@ -54,6 +80,7 @@ public class PlayerWeapon : MonoBehaviour
 
         attack = weapons[currentWeapon].attackValue;
         knockback = weapons[currentWeapon].knockbackForce;
+        UIWeapon.instance.UpdateImageCurrentWeapon();
     }
 
     public void ChangeCurrentWeapon(string weaponName)
@@ -64,6 +91,7 @@ public class PlayerWeapon : MonoBehaviour
             {
                 weapons[i].gameObject.SetActive(true);
                 currentWeapon = i;
+                weaponSprite = weapons[i].sprite;
             }
             else
             {
@@ -74,18 +102,13 @@ public class PlayerWeapon : MonoBehaviour
         attack = weapons[currentWeapon].attackValue;
         knockback = weapons[currentWeapon].knockbackForce;
         UpdateValues();
+        UIWeapon.instance.UpdateImageCurrentWeapon();
     }
 
     public void UpdateValues()
     {
         attackValue = attack + attackBonus;
         knockbackValue = knockback + knockbackBonus;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Swing();
     }
 
     // augmente l'attaque du joueur
@@ -105,12 +128,30 @@ public class PlayerWeapon : MonoBehaviour
     // lance l'animation d'attaque
     public void Swing()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canAttack)
+        StartCoroutine(AttackDelay(0.001f));
+        weapons[currentWeapon].animator.SetTrigger("Swing");
+        StartCoroutine(AttackDuration(0.2f));
+    }
+
+    public void ChangeWeaponDirection()
+    {
+        if (!PauseMenu.instance.isGamePaused)
         {
-            StartCoroutine(AttackDelay(0.001f));
-            weapons[currentWeapon].animator.SetTrigger("Swing");
-            StartCoroutine(HideWeapon(0.3f));
-            StartCoroutine(AttackDuration(0.2f));
+            mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 rotation = mousePos - transform.position;
+            float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, rotZ);
+
+            Vector3 direction = mousePos - transform.position;
+
+            if (direction.x < 0)
+            {
+                transform.localScale = new Vector3(1, -1, 1);
+            }
+            else if (direction.x > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
         }
     }
 
@@ -129,12 +170,4 @@ public class PlayerWeapon : MonoBehaviour
         yield return new WaitForSeconds(delay);
         isAttacking = false;
     }
-
-    public IEnumerator HideWeapon(float duration)
-    {
-        weapons[currentWeapon].sprite.color = new Color(1, 1, 1, 1);
-        yield return new WaitForSeconds(duration);
-        weapons[currentWeapon].sprite.color = new Color(1, 1, 1, 0);
-    }
-
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Mimic : MonoBehaviour
@@ -11,6 +9,8 @@ public class Mimic : MonoBehaviour
 
     public GameObject keyE;
     public GameObject mimicEnemy;
+
+    public GameObject outline;
 
     // vérifie si le joueur est proche du mimic
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,6 +46,7 @@ public class Mimic : MonoBehaviour
     {
         if (canOpenChest && Input.GetKeyDown(KeyCode.E) && !isOpen)
         {
+            outline.gameObject.SetActive(false);
             isOpen = true;
             keyE.SetActive(false);
             PlayerHealth.instance.TakeDamage(damage);
@@ -57,6 +58,7 @@ public class Mimic : MonoBehaviour
     // permet au joueur de pouvoir ouvrir ou non le mimic
     public void AbleToOpenChest(bool isAble)
     {
+        outline.gameObject.SetActive(isAble);
         canOpenChest = isAble;
         keyE.SetActive(isAble);
     }

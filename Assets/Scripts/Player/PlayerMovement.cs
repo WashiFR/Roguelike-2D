@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -14,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 move;
 
+    public Camera mainCam;
+    public Vector3 mousePos;
+
     public static PlayerMovement instance;
 
     // permet d'utiliser les fonctions de la classe dans les autres classe
@@ -26,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         instance = this;
+    }
+
+    private void Start()
+    {
+        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -55,18 +61,19 @@ public class PlayerMovement : MonoBehaviour
     // change la direction du regard du joueur
     public void Flip()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 direction = mousePos - transform.position;
 
-        move = new Vector3(x, y, 0);
-
-        if (move.x > 0)
+        if (!PauseMenu.instance.isGamePaused)
         {
-            transform.localScale = Vector3.one;
-        }
-        else if (move.x < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
+            if (direction.x < 0)
+            {
+                sprite.flipX = true;
+            }
+            else if (direction.x > 0)
+            {
+                sprite.flipX = false;
+            }
         }
     }
 

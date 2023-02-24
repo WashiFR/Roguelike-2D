@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +6,20 @@ public class PauseMenu : MonoBehaviour
     public bool isGamePaused = false;
     public GameObject pauseMenu;
     public GameObject settingsMenu;
+
+    public static PauseMenu instance;
+
+    // permet d'utiliser les fonctions de la classe dans les autres classe
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("Plus d'une instance de PauseMenu dans la scène");
+            return;
+        }
+
+        instance = this;
+    }
 
     private void Update()
     {
