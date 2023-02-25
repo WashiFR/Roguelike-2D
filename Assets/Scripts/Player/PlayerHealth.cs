@@ -130,7 +130,14 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             isDead = true;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
+    }
+
+    public void UpdateHealthValues(float health, float maxHearts, SpriteRenderer graphics)
+    {
+        this.health = health;
+        this.maxHearts = (int)maxHearts;
+        this.graphics = graphics;
     }
 }

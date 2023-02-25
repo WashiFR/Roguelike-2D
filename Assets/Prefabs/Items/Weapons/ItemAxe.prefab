@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canTakeItem: 0
-  price: 7
+  price: 5
   sprite: {fileID: 4986924148942621579}
   textPrice: {fileID: 8994352969323070959}
   keyE: {fileID: 8437558204449231195}
@@ -507,21 +507,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 846655720023321253, guid: 2707ad454e62a1b46bff6092f333746d, type: 3}
   m_PrefabInstance: {fileID: 846655719483099630}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2097585046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 568140619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10d4202eeadd59847a8e2f4adcf96255, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteR: {fileID: 0}
-  sprite: {fileID: 0}
-  layer: 0
 --- !u!4 &568140620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 846655720023321250, guid: 2707ad454e62a1b46bff6092f333746d, type: 3}

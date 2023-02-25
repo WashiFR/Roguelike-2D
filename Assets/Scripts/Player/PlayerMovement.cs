@@ -82,4 +82,11 @@ public class PlayerMovement : MonoBehaviour
     {
         speed += amount;
     }
+
+    public void UpdateMoveValues(float speed, Animator animator, SpriteRenderer sprite)
+    {
+        this.speed = speed;
+        this.animator = animator;
+        this.sprite = sprite;
+    }
 }

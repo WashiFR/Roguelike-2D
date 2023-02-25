@@ -16,6 +16,7 @@ TagManager:
   - Boss
   - FootEnemy
   - FootBoss
+  - PlayerClassItem
   layers:
   - Default
   - TransparentFX

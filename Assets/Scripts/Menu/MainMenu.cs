@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public string levelToLoad;
-
     public GameObject settingsMenu;
+
+    public string levelToLoad;
 
     // bouton pour lancer le jeu
     public void StartGame()

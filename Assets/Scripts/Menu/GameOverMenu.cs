@@ -45,13 +45,15 @@ public class GameOverMenu : MonoBehaviour
     public void RestartGame()
     {
         isGameOver = false;
-        gameOverMenu.SetActive(true);
-        SceneManager.LoadScene("SampleScene");
+        gameOverMenu.SetActive(false);
+        DontDestroyOnLoadScene.instance.RemoveFromDontDestroyOnLoad();
+        SceneManager.LoadScene("CustomMenu");
     }
 
     // redirige vers le Main Menu
     public void MainMenu()
     {
+        DontDestroyOnLoadScene.instance.RemoveFromDontDestroyOnLoad();
         SceneManager.LoadScene("MainMenu");
     }
 

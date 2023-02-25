@@ -39,16 +39,21 @@ public class PlayerWeapon : MonoBehaviour
     private void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        CurrentWeaponUpdate();
         UpdateValues();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // je ne sais pas pourquoi mais il ne prend pas le sprite au Start
+        if (playerSprite == null)
+        {
+            playerSprite = PlayerClass.instance.classes[PlayerClass.instance.currentClass].sprite;
+        }
+
         ChangeWeaponDirection();
 
-        if (Input.GetMouseButtonDown(0) && !PauseMenu.instance.isGamePaused)
+        if (Input.GetMouseButtonDown(0) && !PauseMenu.instance.isGamePaused && canAttack)
         {
             Swing();
         }
@@ -61,26 +66,6 @@ public class PlayerWeapon : MonoBehaviour
         {
             weaponSprite.sortingOrder = playerSprite.sortingOrder + 1;
         }
-    }
-
-    public void CurrentWeaponUpdate()
-    {
-        for (int i = 0; i < weapons.Length; i++)
-        {
-            if (i == currentWeapon)
-            {
-                weapons[i].gameObject.SetActive(true);
-                weaponSprite = weapons[i].sprite;
-            }
-            else
-            {
-                weapons[i].gameObject.SetActive(false);
-            }
-        }
-
-        attack = weapons[currentWeapon].attackValue;
-        knockback = weapons[currentWeapon].knockbackForce;
-        UIWeapon.instance.UpdateImageCurrentWeapon();
     }
 
     public void ChangeCurrentWeapon(string weaponName)
@@ -99,6 +84,7 @@ public class PlayerWeapon : MonoBehaviour
             }
         }
 
+        playerSprite = PlayerClass.instance.classes[PlayerClass.instance.currentClass].sprite;
         attack = weapons[currentWeapon].attackValue;
         knockback = weapons[currentWeapon].knockbackForce;
         UpdateValues();

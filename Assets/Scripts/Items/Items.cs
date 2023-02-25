@@ -27,7 +27,7 @@ public abstract class Items : MonoBehaviour
                 {
                     UseItem();
                 }
-                else if (gameObject.CompareTag("ItemWeapon"))
+                else if (gameObject.CompareTag("ItemWeapon") || gameObject.CompareTag("PlayerClassItem"))
                 {
                     outline.gameObject.SetActive(true);
                     sprite.sortingOrder = 10;

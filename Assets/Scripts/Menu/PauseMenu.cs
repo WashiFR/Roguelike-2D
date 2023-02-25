@@ -55,6 +55,7 @@ public class PauseMenu : MonoBehaviour
     // redirige vers le Main Menu
     public void MainMenu()
     {
+        DontDestroyOnLoadScene.instance.RemoveFromDontDestroyOnLoad();
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
