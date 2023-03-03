@@ -17,6 +17,10 @@ TagManager:
   - FootEnemy
   - FootBoss
   - PlayerClassItem
+  - SpawnPoint
+  - Rooms
+  - SpawnedRoom
+  - EnemiesDetect
   layers:
   - Default
   - TransparentFX

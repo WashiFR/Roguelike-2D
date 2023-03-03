@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour
     public Material whiteMaterial;
 
     public GameObject[] rewards;
+    public GameObject skullHead;
 
     public GameObject healthBar;
     public RectTransform whiteBar;
@@ -113,6 +114,8 @@ public class EnemyHealth : MonoBehaviour
             death.Play();
 
             Reward();
+
+            Instantiate(skullHead, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
         }

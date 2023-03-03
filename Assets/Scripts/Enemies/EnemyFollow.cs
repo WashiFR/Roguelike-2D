@@ -3,35 +3,19 @@ using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
     public float speed;
-    public CircleCollider2D box2D;
-
+    public CapsuleCollider2D box2D;
     public GameObject healthBar;
+
     public Animator animator;
 
-    public bool isPlayerDetected;
     public GameObject player;
+    public EnemiesDetect detect;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && box2D.IsTouching(collision))
+        if (collision.CompareTag("EnemiesDetect") && box2D.IsTouching(collision))
         {
-            isPlayerDetected = true;
-            if (animator.parameterCount >= 1)
-            {
-                animator.SetBool("Chasing", isPlayerDetected);
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player") && !box2D.IsTouching(collision))
-        {
-            isPlayerDetected = false;
-            if (animator.parameterCount >= 1)
-            {
-                animator.SetBool("Chasing", isPlayerDetected);
-            }
+            detect = collision.GetComponent<EnemiesDetect>();
         }
     }
 
@@ -43,7 +27,12 @@ public class EnemyFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlayerDetected)
+        if (animator.parameterCount >= 1)
+        {
+            animator.SetBool("Chasing", detect.playerDetected);
+        }
+
+        if (detect.playerDetected)
         {
             Flip();
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);

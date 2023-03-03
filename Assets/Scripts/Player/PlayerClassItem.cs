@@ -10,10 +10,8 @@ public class PlayerClassItem : Items
     {
         AudioManager.instance.PlayClipAt(soundEffect, transform.position);
         PlayerClass.instance.classes[PlayerClass.instance.currentClass].ChangeSexeClass(sexe);
-        if (PlayerClass.instance.classes[PlayerClass.instance.currentClass].className != className)
-        {
-            PlayerClass.instance.ChangeCurrentClass(className);
-        }
+        PlayerClass.instance.ChangeCurrentClass(className);
+        PlayerClass.instance.classes[PlayerClass.instance.currentClass].ChangeSexeClass(sexe);
         isUsed = true;
         PlayerCustomManager.instance.ChangeCurrentClassUsed();
         PlayerCustomManager.instance.UpdateClassItem();

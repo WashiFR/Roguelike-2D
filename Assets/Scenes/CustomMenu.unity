@@ -2359,7 +2359,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: 321987609, guid: d0b54adbbbb60cc4d972e91bc094aef8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11259,6 +11259,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1709464156, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3793842495147963474, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -11375,6 +11379,10 @@ PrefabInstance:
       propertyPath: coinsCountText
       value: 
       objectReference: {fileID: 1273081576}
+    - target: {fileID: 3793842495833721591, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
 --- !u!1 &1918255904 stripped
@@ -11641,7 +11649,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.23
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -12479,6 +12487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eebdb0171c2d953409118e115134e4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadScene: SampleScene
+  loadScene: Level01
   keyE: {fileID: 189075227}
   canStartTheGame: 0

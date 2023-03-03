@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 4538359846207885353}
   - component: {fileID: 4538359846207885352}
   - component: {fileID: 277353562}
-  - component: {fileID: 1102508014}
   - component: {fileID: 1102508013}
   m_Layer: 7
   m_Name: Gobelin
@@ -395,6 +394,7 @@ MonoBehaviour:
   rewards:
   - {fileID: 5152274251085971274, guid: 3c7757e6988243945875bd741831b03d, type: 3}
   - {fileID: 1331751286637815482, guid: 0e3c565215bb6da4e91311be5adc7770, type: 3}
+  skullHead: {fileID: 4388162888789626903, guid: 7097f022405498946bb36a16648aa681, type: 3}
   healthBar: {fileID: 1305125809}
   whiteBar: {fileID: 853470471}
   redBar: {fileID: 1921949281}
@@ -408,22 +408,6 @@ MonoBehaviour:
   audioSource: {fileID: 3521981640217485215}
   soundEffect: {fileID: 8300000, guid: 33ff1a4c34aaae1428056fd8bd0da84d, type: 3}
   dieSoundEffect: {fileID: 8300000, guid: e18fd6175b40f9047b1071f93d3d5a86, type: 3}
---- !u!58 &1102508014
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4538359846207885355}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 3
 --- !u!114 &1102508013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,11 +421,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  box2D: {fileID: 1102508014}
+  box2D: {fileID: 6955727632653748225}
   healthBar: {fileID: 1305125809}
   animator: {fileID: 4538359846207885353}
-  isPlayerDetected: 0
   player: {fileID: 0}
+  detect: {fileID: 0}
 --- !u!1001 &6791107593822997
 PrefabInstance:
   m_ObjectHideFlags: 0

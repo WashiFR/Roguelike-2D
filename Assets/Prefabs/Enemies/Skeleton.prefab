@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 2222427592793653043}
   - component: {fileID: 770695766}
   - component: {fileID: 7303592561737921389}
-  - component: {fileID: 5523601193012171054}
   - component: {fileID: 4138202213088042863}
   m_Layer: 7
   m_Name: Skeleton
@@ -178,6 +177,7 @@ MonoBehaviour:
   rewards:
   - {fileID: 5152274251085971274, guid: 3c7757e6988243945875bd741831b03d, type: 3}
   - {fileID: 1331751286637815482, guid: 0e3c565215bb6da4e91311be5adc7770, type: 3}
+  skullHead: {fileID: 4388162888789626903, guid: 7097f022405498946bb36a16648aa681, type: 3}
   healthBar: {fileID: 921081532510313645}
   whiteBar: {fileID: 921081534036267547}
   redBar: {fileID: 921081532959367549}
@@ -307,22 +307,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!58 &5523601193012171054
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422668088120560133}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 3
 --- !u!114 &4138202213088042863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,11 +320,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  box2D: {fileID: 5523601193012171054}
+  box2D: {fileID: 2233166525390501224}
   healthBar: {fileID: 921081532510313645}
   animator: {fileID: 770695766}
-  isPlayerDetected: 0
   player: {fileID: 0}
+  detect: {fileID: 0}
 --- !u!1 &9003600816162368369
 GameObject:
   m_ObjectHideFlags: 0

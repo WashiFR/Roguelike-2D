@@ -19,6 +19,8 @@ public class PlayerHealth : MonoBehaviour
 
     public SpriteRenderer graphics;
 
+    public Animator animator;
+
     public AudioSource audioSource;
     public AudioClip soundEffect;
 
@@ -38,6 +40,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
+        // test temporaire
+        if (Input.GetKeyDown(KeyCode.F)) TakeDamage(0.5f);
+
         Die();
 
         UpdateHearts();
@@ -49,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
         if (!isInvincible)
         {
             AudioManager.instance.PlayClipAt(soundEffect, transform.position);
+            animator.SetTrigger("Hit");
             health -= amount;
             isInvincible = true;
             MainCamera.instance.Shake();
@@ -134,10 +140,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void UpdateHealthValues(float health, float maxHearts, SpriteRenderer graphics)
+    public void UpdateHealthValues(float health, float maxHearts, SpriteRenderer graphics, Animator animator)
     {
         this.health = health;
         this.maxHearts = (int)maxHearts;
         this.graphics = graphics;
+        this.animator = animator;
     }
 }
