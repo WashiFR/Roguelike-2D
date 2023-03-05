@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class EnemiesDetect : MonoBehaviour
@@ -37,10 +38,20 @@ public class EnemiesDetect : MonoBehaviour
             box2DEnemies.enabled = true;
         }
 
+        if (collision.CompareTag("FootBoss"))
+        {
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (!enemies[i].CompareTag("FootBoss"))
+                {
+                    Destroy(enemies[i].transform.parent.gameObject);
+                }
+            }
+        }
+
         if (playerDetected && enemiesDetected && !doorsClosed)
         {
-            audioSource.PlayOneShot(soundEffect);
-            MainCamera.instance.DoorShake();
+            StartCoroutine(AnimationDoors(0.5f));
         }
     }
 
@@ -81,5 +92,14 @@ public class EnemiesDetect : MonoBehaviour
             doors[i].gameObject.SetActive(isClosed);
             doorsClosed = isClosed;
         }
+    }
+
+    public IEnumerator AnimationDoors(float delay)
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(delay);
+        audioSource.PlayOneShot(soundEffect);
+        MainCamera.instance.DoorShake();
+        Time.timeScale = 1;
     }
 }

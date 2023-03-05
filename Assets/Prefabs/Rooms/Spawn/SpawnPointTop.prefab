@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b881d111b74ab4db2c9dc0b9ee9126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingDoor: 2
+  openingDoor: 1
   templates: {fileID: 0}
   rand: 0
   spawned: 0

@@ -21,6 +21,7 @@ TagManager:
   - Rooms
   - SpawnedRoom
   - EnemiesDetect
+  - Camera
   layers:
   - Default
   - TransparentFX

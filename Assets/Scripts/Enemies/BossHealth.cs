@@ -19,6 +19,7 @@ public class BossHealth : MonoBehaviour
 
     public Rigidbody2D rb;
     public BoxCollider2D box2D;
+    public CapsuleCollider2D capsuleCollider;
     public EnemiesDetect detect;
 
     public AudioSource audioSource;
@@ -30,6 +31,10 @@ public class BossHealth : MonoBehaviour
         if (collision.CompareTag("Weapon") && box2D.IsTouching(collision))
         {
             canTakeDamage = true;
+        }
+        if (collision.CompareTag("EnemiesDetect") && capsuleCollider.IsTouching(collision))
+        {
+            detect = collision.GetComponent<EnemiesDetect>();
         }
     }
 

@@ -47,9 +47,19 @@ public class RoomSpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("SpawnPoint") || collision.CompareTag("SpawnedRoom"))
+        if (collision.CompareTag("SpawnedRoom"))
         {
+            spawned = true;
             Destroy(gameObject);
+        }
+        else if (collision.CompareTag("SpawnPoint"))
+        {
+            if (!collision.GetComponent<RoomSpawner>().spawned && !spawned)
+            {
+                Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+            spawned = true;
         }
     }
 }
