@@ -382,11 +382,21 @@ MonoBehaviour:
   fullHeart: {fileID: 21300000, guid: 09d805c325d1e424e8cd84a79b1c2111, type: 3}
   halfHeart: {fileID: 21300000, guid: 059c525965ae3284497f8841a0d6e6d1, type: 3}
   emptyHeart: {fileID: 21300000, guid: 1eede04a77f266d439132372d13c6fa4, type: 3}
+  armor: 0
+  maxArmor: 4
+  armors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullArmor: {fileID: -2136897036, guid: 8df3205701e37db4b8631c7282b9443b, type: 3}
+  halfArmor: {fileID: 265258051, guid: 8df3205701e37db4b8631c7282b9443b, type: 3}
   isDead: 0
   isInvincible: 0
   invincibilityFlashDelay: 0.15
   invincibilityTimeDelay: 2
   graphics: {fileID: 0}
+  animator: {fileID: 0}
   audioSource: {fileID: 3793842495147963482}
   soundEffect: {fileID: 8300000, guid: 1d91c0ccb8058fc45add3b60436d9e6e, type: 3}
 --- !u!114 &3793842495147963483
@@ -844,6 +854,10 @@ PrefabInstance:
       value: Knight
       objectReference: {fileID: 0}
     - target: {fileID: 8626394887475903730, guid: 1652fdb41d64255499d8866a8b226d51, type: 3}
+      propertyPath: armorValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626394887475903730, guid: 1652fdb41d64255499d8866a8b226d51, type: 3}
       propertyPath: currentSexe
       value: 1
       objectReference: {fileID: 0}
@@ -927,6 +941,10 @@ PrefabInstance:
     - target: {fileID: 7017911777732102803, guid: 00461c53877285b4c9f6e3df1b53bea3, type: 3}
       propertyPath: currentSexe
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017911777732102803, guid: 00461c53877285b4c9f6e3df1b53bea3, type: 3}
+      propertyPath: healthValue
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7017911777732102803, guid: 00461c53877285b4c9f6e3df1b53bea3, type: 3}
       propertyPath: sexes.Array.size

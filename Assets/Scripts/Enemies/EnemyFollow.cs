@@ -27,7 +27,10 @@ public class EnemyFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetBool("Chasing", detect.playerDetected);
+        if (animator.parameterCount >= 1)
+        {
+            animator.SetBool("Chasing", detect.playerDetected);
+        }
 
         if (detect.playerDetected)
         {

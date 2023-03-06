@@ -12,6 +12,13 @@ public class PlayerHealth : MonoBehaviour
     public Sprite halfHeart;
     public Sprite emptyHeart;
 
+    public float armor;
+    public int maxArmor;
+
+    public Image[] armors;
+    public Sprite fullArmor;
+    public Sprite halfArmor;
+
     public bool isDead = false;
     public bool isInvincible = false;
     public float invincibilityFlashDelay;
@@ -38,14 +45,26 @@ public class PlayerHealth : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        UpdateHearts();
+
+        UpdateArmor();
+    }
+
     private void Update()
     {
         // test temporaire
         if (Input.GetKeyDown(KeyCode.F)) TakeDamage(0.5f);
+        if (Input.GetKeyDown(KeyCode.T)) TakeDamage(1.5f);
+        if (Input.GetKeyDown(KeyCode.A)) MoreArmor();
+        if (Input.GetKeyDown(KeyCode.C)) MoreHeart();
 
         Die();
 
         UpdateHearts();
+
+        UpdateArmor();
     }
 
     // perd des pv/coeurs
@@ -55,7 +74,23 @@ public class PlayerHealth : MonoBehaviour
         {
             AudioManager.instance.PlayClipAt(soundEffect, transform.position);
             animator.SetTrigger("Hit");
-            health -= amount;
+            if (armor > 0)
+            {
+                if (armor - amount < 0)
+                {
+                    float temp = armor;
+                    armor = 0;
+                    health -= amount - temp;
+                }
+                else
+                {
+                    armor -= amount;
+                }
+            }
+            else
+            {
+                health -= amount;
+            }
             isInvincible = true;
             MainCamera.instance.Shake();
             StartCoroutine(InvincibilityFlash());
@@ -95,6 +130,12 @@ public class PlayerHealth : MonoBehaviour
         health++;
     }
 
+    // ajoute 1 d'armure
+    public void MoreArmor()
+    {
+        armor++;
+    }
+
     // met à jour le nombre de coeur
     public void UpdateHearts()
     {
@@ -121,11 +162,45 @@ public class PlayerHealth : MonoBehaviour
 
             if (i < maxHearts)
             {
-                hearts[i].enabled = true;
+                hearts[i].gameObject.SetActive(true);
             }
             else
             {
-                hearts[i].enabled = false;
+                hearts[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void UpdateArmor()
+    {
+        // empeche d'avoir plus d'armue que le nombre max d'armure définit
+        if (armor > maxArmor)
+        {
+            armor = maxArmor;
+        }
+
+        for (int i = 0; i < armors.Length; i++)
+        {
+            if (i == armor - 0.5f)
+            {
+                armors[i].sprite = halfArmor;
+            }
+            else if (i < armor)
+            {
+                armors[i].sprite = fullArmor;
+            }
+            else
+            {
+                armors[i].gameObject.SetActive(false);
+            }
+
+            if (i < armor)
+            {
+                armors[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                armors[i].gameObject.SetActive(false);
             }
         }
     }
@@ -140,10 +215,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void UpdateHealthValues(float health, float maxHearts, SpriteRenderer graphics, Animator animator)
+    public void UpdateHealthValues(float health, float maxHearts, float armor, SpriteRenderer graphics, Animator animator)
     {
         this.health = health;
         this.maxHearts = (int)maxHearts;
+        this.armor = armor;
         this.graphics = graphics;
         this.animator = animator;
     }

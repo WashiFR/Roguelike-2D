@@ -175,7 +175,7 @@ MonoBehaviour:
   originalMaterial: {fileID: 0}
   whiteMaterial: {fileID: 2100000, guid: bb862990e87888c4190f277bf8a0aa91, type: 2}
   rewards:
-  - {fileID: 5152274251085971274, guid: 3c7757e6988243945875bd741831b03d, type: 3}
+  - {fileID: 8356139317644391685, guid: 37def466179c0614eac3c41aba7fd65b, type: 3}
   - {fileID: 1331751286637815482, guid: 0e3c565215bb6da4e91311be5adc7770, type: 3}
   skullHead: {fileID: 4388162888789626903, guid: 7097f022405498946bb36a16648aa681, type: 3}
   healthBar: {fileID: 921081532510313645}

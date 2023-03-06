@@ -10,6 +10,7 @@ public class Class : MonoBehaviour
     public Animator animator;
 
     public float healthValue;
+    public float armorValue;
     public float speedValue;
     public string weaponStartName;
 

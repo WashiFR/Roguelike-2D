@@ -68,6 +68,6 @@ public class PlayerClass : MonoBehaviour
         sprite = classes[currentClass].sprite;
         PlayerWeapon.instance.ChangeCurrentWeapon(classes[currentClass].weaponStartName);
         PlayerMovement.instance.UpdateMoveValues(classes[currentClass].speedValue, classes[currentClass].animator, classes[currentClass].sprite);
-        PlayerHealth.instance.UpdateHealthValues(classes[currentClass].healthValue, classes[currentClass].healthValue, classes[currentClass].sprite, classes[currentClass].animator);
+        PlayerHealth.instance.UpdateHealthValues(classes[currentClass].healthValue, classes[currentClass].healthValue, classes[currentClass].armorValue, classes[currentClass].sprite, classes[currentClass].animator);
     }
 }
