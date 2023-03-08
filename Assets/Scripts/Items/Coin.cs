@@ -48,5 +48,6 @@ public class Coin : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        speed += Time.deltaTime;
     }
 }

@@ -1870,7 +1870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1918255905}
-  smoothSpeed: 0.01
+  smoothSpeed: 0.1
   targetPos: {x: 0, y: 0, z: 0}
   newPos: {x: 0, y: 0, z: 0}
   minPos: {x: 0, y: 0, z: -10}
@@ -2160,7 +2160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: 2}
+  m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
 --- !u!114 &183021419
 MonoBehaviour:
@@ -2959,7 +2959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: 2}
+  m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
 --- !u!114 &365367290
 MonoBehaviour:
@@ -4230,7 +4230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: 2}
+  m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
 --- !u!114 &668958970
 MonoBehaviour:
@@ -5014,7 +5014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: 2}
+  m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
 --- !u!114 &836260731
 MonoBehaviour:
@@ -10200,7 +10200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: 2}
+  m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
 --- !u!114 &1273081576
 MonoBehaviour:
@@ -11586,6 +11586,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 377131457, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 622558055, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643371417, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709464156, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187301315260175827, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3793842495147963474, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -11718,6 +11738,22 @@ PrefabInstance:
       propertyPath: coinsCountText
       value: 
       objectReference: {fileID: 1273081576}
+    - target: {fileID: 3793842495833721591, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077600254686635075, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077600254698304656, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077600255053654418, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ea568cc1ad070f4d81be48f69eb6771, type: 3}
 --- !u!1 &1918255904 stripped
@@ -12076,7 +12112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: 2}
+  m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
 --- !u!114 &2018713691
 MonoBehaviour:
@@ -12292,7 +12328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: 2}
+  m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
 --- !u!114 &2044204714
 MonoBehaviour:
@@ -12797,7 +12833,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 2}
+  m_Size: {x: 4, y: 3}
   m_EdgeRadius: 0
 --- !u!4 &2131989529
 Transform:

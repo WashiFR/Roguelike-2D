@@ -22,6 +22,7 @@ TagManager:
   - SpawnedRoom
   - EnemiesDetect
   - Camera
+  - BossHealthBar
   layers:
   - Default
   - TransparentFX

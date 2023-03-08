@@ -134,9 +134,13 @@ public class BossHealth : MonoBehaviour
     // affiche ou non la barre de vie
     public void DisplayHealthBar()
     {
-        if (detect.playerDetected)
+        if (detect.playerDetected || health < maxHealth)
         {
             healthBar.gameObject.SetActive(true);
+        }
+        else
+        {
+            healthBar.gameObject.SetActive(false);
         }
     }
 }

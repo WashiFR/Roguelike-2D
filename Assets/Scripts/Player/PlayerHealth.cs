@@ -55,10 +55,10 @@ public class PlayerHealth : MonoBehaviour
     private void Update()
     {
         // test temporaire
-        if (Input.GetKeyDown(KeyCode.F)) TakeDamage(0.5f);
+        /*if (Input.GetKeyDown(KeyCode.F)) TakeDamage(0.5f);
         if (Input.GetKeyDown(KeyCode.T)) TakeDamage(1.5f);
         if (Input.GetKeyDown(KeyCode.A)) MoreArmor();
-        if (Input.GetKeyDown(KeyCode.C)) MoreHeart();
+        if (Input.GetKeyDown(KeyCode.C)) MoreHeart();*/
 
         Die();
 

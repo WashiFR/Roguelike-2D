@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 441490834906666081}
   - component: {fileID: 4747986822695073697}
   - component: {fileID: 8732621824337957587}
+  - component: {fileID: 7960135484341965910}
   m_Layer: 0
   m_Name: SpawnedRoom
   m_TagString: SpawnedRoom
@@ -80,3 +81,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7960135484341965910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816506327639727093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c01b64eabf27db4197c17643b521489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
