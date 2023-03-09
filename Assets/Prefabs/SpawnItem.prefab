@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1912394591629360293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4859251194391586867}
+  - component: {fileID: 1143535831465080205}
+  m_Layer: 0
+  m_Name: SpawnItem
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4859251194391586867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912394591629360293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5, y: 2.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1143535831465080205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912394591629360293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95b3b287042bb24e881778303f93a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potions:
+  - {fileID: 1188060862945038014, guid: 710021d8427d8044997c009e08b09d12, type: 3}
+  - {fileID: 750906063532075703, guid: 5e375ccd06d4ebd4794e80fa62116d12, type: 3}
+  - {fileID: 3400308327987090976, guid: e23bcb0b223416f428d62e35c60d7c91, type: 3}
+  - {fileID: 2069597128307567315, guid: f17e4fdfe7350a24d8ef3117e3fcd4fe, type: 3}
+  - {fileID: 6447240585634780452, guid: 81bdbca4b2d8e4a42a9a4c6fa5622157, type: 3}
+  - {fileID: 6502621477936088833, guid: be4e9bd072bf06c44a40998d042a0687, type: 3}
+  - {fileID: 3127574042255813997, guid: 2ecc470bb4d4fd84f9fea6019aabcb28, type: 3}
+  - {fileID: 3886365202990964680, guid: e803d5d5bcd8e3d47bed6980c49231b9, type: 3}
+  weapons:
+  - {fileID: 2899484562906436565, guid: 2775251d04f91ea46bc37ba55e673213, type: 3}
+  - {fileID: 2446086020896536213, guid: 47837b0c8e08b9e4f8fc340cdc58665c, type: 3}
+  - {fileID: 2701158610884239675, guid: 3a9ee652d3669a5429d0e1e820093592, type: 3}
+  others:
+  - {fileID: 5802201563528635604, guid: 1fabac666462d23489cb9b56166ee517, type: 3}
+  - {fileID: 3566726414067364019, guid: b34d9e60051a34142bcfa7e0ed8322b3, type: 3}
+  rand: 0

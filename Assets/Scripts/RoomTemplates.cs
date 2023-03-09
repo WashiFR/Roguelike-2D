@@ -13,15 +13,28 @@ public class RoomTemplates : MonoBehaviour
     public List<GameObject> rooms;
 
     public float waitTime;
+
     public bool spawnedBoss;
     public GameObject boss;
 
+    public bool spawnedShop;
+    public GameObject shop;
+
     private void Update()
     {
-        if (waitTime <= 0 && !spawnedBoss)
+        if (waitTime <= 0)
         {
-            Instantiate(boss, rooms[rooms.Count - 1].transform.position, Quaternion.identity);
-            spawnedBoss = true;
+            if (!spawnedBoss)
+            {
+                Instantiate(boss, rooms[rooms.Count - 1].transform.position, Quaternion.identity);
+                spawnedBoss = true;
+            }
+            if (!spawnedShop)
+            {
+                int rand = Random.Range(0, rooms.Count - 2);
+                Instantiate(shop, rooms[rand].transform.position, Quaternion.identity);
+                spawnedShop = true;
+            }
         }
         else
         {

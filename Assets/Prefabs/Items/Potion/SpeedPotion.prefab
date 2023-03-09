@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canTakeItem: 0
-  price: 1
+  price: 2
   sprite: {fileID: 1212519793364898995}
   textPrice: {fileID: 1264130202489630494}
   keyE: {fileID: 8864406664532733667}

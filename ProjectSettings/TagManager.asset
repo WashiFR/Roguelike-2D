@@ -23,6 +23,7 @@ TagManager:
   - EnemiesDetect
   - Camera
   - BossHealthBar
+  - Shop
   layers:
   - Default
   - TransparentFX

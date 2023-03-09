@@ -49,6 +49,17 @@ public class EnemiesDetect : MonoBehaviour
             }
         }
 
+        if (collision.CompareTag("Shop"))
+        {
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (!enemies[i].CompareTag("Shop"))
+                {
+                    Destroy(enemies[i].transform.parent.gameObject);
+                }
+            }
+        }
+
         if (playerDetected && enemiesDetected && !doorsClosed)
         {
             StartCoroutine(AnimationDoors(0.5f));
