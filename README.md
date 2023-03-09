@@ -1,5 +1,5 @@
 # Roguelike-2D
 
-## Télécharger / Download
+## Install
 
 https://washi-fr.itch.io/roguelike-2d
