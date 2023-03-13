@@ -1224,6 +1224,9 @@ MonoBehaviour:
   boss: {fileID: 232008074294400299, guid: 01a76c60fe358b14da3ff73d9faa60a1, type: 3}
   spawnedShop: 0
   shop: {fileID: 2593676377499332084, guid: 3ccca720dde83d947bb3ebf0cab9b4c6, type: 3}
+  temp: 0
+  spawnedChestRoom: 0
+  chestRoom: {fileID: 1699830101559553233, guid: 3a7e504eda9badf4989e20caae644dfd, type: 3}
 --- !u!4 &1652150998
 Transform:
   m_ObjectHideFlags: 0

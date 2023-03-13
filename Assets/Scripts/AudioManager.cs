@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogWarning("Plus d'une instance de AudioManager dans la scène");
+            Debug.LogWarning("Plus d'une instance de AudioManager dans la scï¿½ne");
             return;
         }
 
@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
         audioSource.Play();
     }
 
-    // permet de jouer un sons pour les objets qui se détruits
+    // permet de jouer un sons pour les objets qui se dï¿½truits
     public AudioSource PlayClipAt(AudioClip clip, Vector3 position)
     {
         GameObject tempGO = new GameObject("TempAudio");

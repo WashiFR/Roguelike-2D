@@ -124,23 +124,32 @@ public class EnemyHealth : MonoBehaviour
     // donne des récompenses
     public void Reward()
     {
-        int numberOfReward = Random.Range(0, 2);
-        int objectReward = Random.Range(0, rewards.Length);
+        int rand = Random.Range(1, 4);
 
-        // pièces
-        if (rewards[objectReward].name == "Coin")
+        // 33% drop an item
+        if (rand < 2)
         {
-            numberOfReward = Random.Range(0, 4);
-        }
+            int objectReward = Random.Range(0, rewards.Length);
 
-        for (int i = 0; i < numberOfReward; i++)
-        {
-            float randomPosX = Random.Range(-0.5f, 0.5f);
-            float randomPosY = Random.Range(-0.5f, 0.5f);
+            // pièces
+            if (rewards[objectReward].name == "Coin")
+            {
+                int numberOfReward = Random.Range(1, 3);
 
-            Vector3 randomPos = new Vector3(randomPosX, randomPosY, 0);
+                for (int i = 0; i < numberOfReward; i++)
+                {
+                    float randomPosX = Random.Range(-0.5f, 0.5f);
+                    float randomPosY = Random.Range(-0.5f, 0.5f);
 
-            Instantiate(rewards[objectReward], transform.position + randomPos, transform.rotation);
+                    Vector3 randomPos = new Vector3(randomPosX, randomPosY, 0);
+
+                    Instantiate(rewards[objectReward], transform.position + randomPos, transform.rotation);
+                }
+            }
+            else
+            {
+                Instantiate(rewards[objectReward], transform.position, transform.rotation);
+            }
         }
     }
 

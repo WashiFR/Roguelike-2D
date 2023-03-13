@@ -74,7 +74,7 @@ public class Chest : MonoBehaviour
     // choisis la récompense
     public void Reward()
     {
-        int randomAmount = Random.Range(0, 10);
+        int randomAmount = Random.Range(1, 6);
         PlayerCoins.instance.AddCoin(randomAmount);
         textReward.gameObject.SetActive(true);
         textReward.text = randomAmount.ToString();

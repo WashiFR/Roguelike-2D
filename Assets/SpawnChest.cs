@@ -9,17 +9,17 @@ public class SpawnChest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // 0 --> no chest 50%
-        // 1 --> chest 50%
-        rand = Random.Range(0, 2);
+        // 0 --> no chest 33%
+        // 1 --> chest 66%
+        rand = Random.Range(1, 4);
 
-        if (rand == 1)
+        if (rand <= 2)
         {
-            // 5 --> mimic 20%
-            // 0..4 --> real chest 80%
-            rand = Random.Range(0, 6);
+            // 5 --> mimic 5%
+            // 0..4 --> real chest 95%
+            rand = Random.Range(1, 100);
 
-            if (rand == 5)
+            if (rand <= 5)
             {
                 Instantiate(mimic.transform, transform.position, Quaternion.identity);
             }

@@ -31,6 +31,7 @@ public class EnemiesDetect : MonoBehaviour
                 enemiesCount++;
             }
         }
+
         if (collision.CompareTag("Player"))
         {
             playerDetected = true;
@@ -40,24 +41,15 @@ public class EnemiesDetect : MonoBehaviour
 
         if (collision.CompareTag("FootBoss"))
         {
-            for (int i = 0; i < enemies.Count; i++)
-            {
-                if (!enemies[i].CompareTag("FootBoss"))
-                {
-                    Destroy(enemies[i].transform.parent.gameObject);
-                }
-            }
+            DeleteEntities(collision, "FootBoss");
         }
-
-        if (collision.CompareTag("Shop"))
+        else if (collision.CompareTag("Shop"))
         {
-            for (int i = 0; i < enemies.Count; i++)
-            {
-                if (!enemies[i].CompareTag("Shop"))
-                {
-                    Destroy(enemies[i].transform.parent.gameObject);
-                }
-            }
+            DeleteEntities(collision, "Shop");
+        }
+        else if (collision.CompareTag("ChestRoom"))
+        {
+            DeleteEntities(collision, "ChestRoom");
         }
 
         if (playerDetected && enemiesDetected && !doorsClosed)
@@ -93,6 +85,17 @@ public class EnemiesDetect : MonoBehaviour
         else if (!enemiesDetected)
         {
             Doors(false);
+        }
+    }
+
+    public void DeleteEntities(Collider2D collision, string tagName)
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (!enemies[i].CompareTag(tagName))
+            {
+                Destroy(enemies[i].transform.parent.gameObject);
+            }
         }
     }
 

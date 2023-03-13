@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class AddRoom : MonoBehaviour
 {
+    // This script is attached to the room prefabs
     public RoomTemplates templates;
 
     // Start is called before the first frame update

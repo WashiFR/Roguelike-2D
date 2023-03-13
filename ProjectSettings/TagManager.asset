@@ -24,6 +24,7 @@ TagManager:
   - Camera
   - BossHealthBar
   - Shop
+  - ChestRoom
   layers:
   - Default
   - TransparentFX
